@@ -1,0 +1,840 @@
+\def\year{2022}\relax
+%File: formatting-instructions-latex-2022.tex
+%release 2022.1
+\documentclass[letterpaper]{article} % DO NOT CHANGE THIS
+\usepackage{aaai22}  % DO NOT CHANGE THIS
+\usepackage{times}  % DO NOT CHANGE THIS
+\usepackage{helvet}  % DO NOT CHANGE THIS
+\usepackage{courier}  % DO NOT CHANGE THIS
+\usepackage[hyphens]{url}  % DO NOT CHANGE THIS
+\usepackage{graphicx} % DO NOT CHANGE THIS
+\urlstyle{rm} % DO NOT CHANGE THIS
+\def\UrlFont{\rm}  % DO NOT CHANGE THIS
+\usepackage{natbib}  % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\usepackage{caption} % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\DeclareCaptionStyle{ruled}{labelfont=normalfont,labelsep=colon,strut=off} % DO NOT CHANGE THIS
+\frenchspacing  % DO NOT CHANGE THIS
+\setlength{\pdfpagewidth}{8.5in}  % DO NOT CHANGE THIS
+\setlength{\pdfpageheight}{11in}  % DO NOT CHANGE THIS
+%
+% These are recommended to typeset algorithms but not required. See the subsubsection on algorithms. Remove them if you don't have algorithms in your paper.
+\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{algorithm,algpseudocode}
+%
+%
+% Packages manually added by the author of the paper
+%
+\usepackage{amsmath}
+\usepackage{array, boldline, makecell, booktabs}
+\usepackage{enumerate}
+\usepackage{subfig}
+%
+%
+
+%
+% These are are recommended to typeset listings but not required. See the subsubsection on listing. Remove this block if you don't have listings in your paper.
+\usepackage{newfloat}
+\usepackage{listings}
+\lstset{%
+	basicstyle={\footnotesize\ttfamily},% footnotesize acceptable for monospace
+	numbers=left,numberstyle=\footnotesize,xleftmargin=2em,% show line numbers, remove this entire line if you don't want the numbers.
+	aboveskip=0pt,belowskip=0pt,%
+	showstringspaces=false,tabsize=2,breaklines=true}
+\floatstyle{ruled}
+\newfloat{listing}{tb}{lst}{}
+\floatname{listing}{Listing}
+%
+%\nocopyright
+%
+% PDF Info Is REQUIRED.
+% For /Title, write your title in Mixed Case.
+% Don't use accents or commands. Retain the parentheses.
+% For /Author, add all authors within the parentheses,
+% separated by commas. No accents, special characters
+% or commands are allowed.
+% Keep the /TemplateVersion tag as is
+\pdfinfo{
+/Title (AAAI Press Formatting Instructions for Authors Using LaTeX -- A Guide)
+/Author (AAAI Press Staff, Pater Patel Schneider, Sunil Issar, J. Scott Penberthy, George Ferguson, Hans Guesgen, Francisco Cruz, Marc Pujol-Gonzalez)
+/TemplateVersion (2022.1)
+}
+
+% DISALLOWED PACKAGES
+% \usepackage{authblk} -- This package is specifically forbidden
+% \usepackage{balance} -- This package is specifically forbidden
+% \usepackage{color (if used in text)
+% \usepackage{CJK} -- This package is specifically forbidden
+% \usepackage{float} -- This package is specifically forbidden
+% \usepackage{flushend} -- This package is specifically forbidden
+% \usepackage{fontenc} -- This package is specifically forbidden
+% \usepackage{fullpage} -- This package is specifically forbidden
+% \usepackage{geometry} -- This package is specifically forbidden
+% \usepackage{grffile} -- This package is specifically forbidden
+% \usepackage{hyperref} -- This package is specifically forbidden
+% \usepackage{navigator} -- This package is specifically forbidden
+% (or any other package that embeds links such as navigator or hyperref)
+% \indentfirst} -- This package is specifically forbidden
+% \layout} -- This package is specifically forbidden
+% \multicol} -- This package is specifically forbidden
+% \nameref} -- This package is specifically forbidden
+% \usepackage{savetrees} -- This package is specifically forbidden
+% \usepackage{setspace} -- This package is specifically forbidden
+% \usepackage{stfloats} -- This package is specifically forbidden
+% \usepackage{tabu} -- This package is specifically forbidden
+% \usepackage{titlesec} -- This package is specifically forbidden
+% \usepackage{tocbibind} -- This package is specifically forbidden
+% \usepackage{ulem} -- This package is specifically forbidden
+% \usepackage{wrapfig} -- This package is specifically forbidden
+% DISALLOWED COMMANDS
+% \nocopyright -- Your paper will not be published if you use this command
+% \addtolength -- This command may not be used
+% \balance -- This command may not be used
+% \baselinestretch -- Your paper will not be published if you use this command
+% \clearpage -- No page breaks of any kind may be used for the final version of your paper
+% \columnsep -- This command may not be used
+% \newpage -- No page breaks of any kind may be used for the final version of your paper
+% \pagebreak -- No page breaks of any kind may be used for the final version of your paperr
+% \pagestyle -- This command may not be used
+% \tiny -- This is not an acceptable font size.
+% \vspace{- -- No negative value may be used in proximity of a caption, figure, table, section, subsection, subsubsection, or reference
+% \vskip{- -- No negative value may be used to alter spacing above or below a caption, figure, table, section, subsection, subsubsection, or reference
+
+\setcounter{secnumdepth}{0} %May be changed to 1 or 2 if section numbers are desired.
+
+% The file aaai22.sty is the style file for AAAI Press
+% proceedings, working notes, and technical reports.
+%
+
+% Title
+
+% Your title must be in mixed case, not sentence case.
+% That means all verbs (including short verbs like be, is, using,and go),
+% nouns, adverbs, adjectives should be capitalized, including both words in hyphenated terms, while
+% articles, conjunctions, and prepositions are lower case unless they
+% directly follow a colon or long dash
+\iffalse
+\title{AAAI Press Formatting Instructions \\for Authors Using \LaTeX{} --- A Guide}
+\author{
+    %Authors
+    % All authors must be in the same font size and format.
+    Written by AAAI Press Staff\textsuperscript{\rm 1}\thanks{With help from the AAAI Publications Committee.}\\
+    AAAI Style Contributions by Pater Patel Schneider,
+    Sunil Issar,\\
+    J. Scott Penberthy,
+    George Ferguson,
+    Hans Guesgen,
+    Francisco Cruz\equalcontrib,
+    Marc Pujol-Gonzalez\equalcontrib
+}
+\affiliations{
+    %Afiliations
+    \textsuperscript{\rm 1}Association for the Advancement of Artificial Intelligence\\
+    % If you have multiple authors and multiple affiliations
+    % use superscripts in text and roman font to identify them.
+    % For example,
+
+    % Sunil Issar, \textsuperscript{\rm 2}
+    % J. Scott Penberthy, \textsuperscript{\rm 3}
+    % George Ferguson,\textsuperscript{\rm 4}
+    % Hans Guesgen, \textsuperscript{\rm 5}.
+    % Note that the comma should be placed BEFORE the superscript for optimum readability
+
+    2275 East Bayshore Road, Suite 160\\
+    Palo Alto, California 94303\\
+    % email address must be in roman text type, not monospace or sans serif
+    publications22@aaai.org
+%
+% See more examples next
+}
+\fi
+
+%Example, Single Author, ->> remove \iffalse,\fi and place them surrounding AAAI title to use it
+\iffalse
+\title{My Publication Title --- Single Author}
+\author {
+    Author Name
+}
+\affiliations{
+    Affiliation\\
+    Affiliation Line 2\\
+    name@example.com
+}
+\fi
+
+
+%Example, Multiple Authors, ->> remove \iffalse,\fi and place them surrounding AAAI title to use it
+%\title{DISTANT-CTO: A Zero Cost, Distantly Supervised Approach to Improve Low-Resource Clinical Entity Extraction using Clinical Trials Literature}
+\title{DISTANT-CTO: A Zero Cost, Distantly Supervised Approach to Improve Low-Resource Entity Extraction Using Clinical Trials Literature}
+\author {
+    % Authors
+    Paper ID: 7649
+}
+\iffalse
+\author {
+    % Authors
+    Anjani Dhrangadhariya,\textsuperscript{\rm 1, 2}
+    Henning M\"uller, \textsuperscript{\rm 1, 2}
+}
+\affiliations {
+    % Affiliations
+    \textsuperscript{\rm 1} University of Applied Sciences Western Switzerland (HES-SO), Sierre, Switzerland \\
+    \textsuperscript{\rm 2} University of Geneva (UNIGE), Geneva, Switzerland \\
+    anjani.dhrangadhariya@hevs.ch, henning.mueller@hevs.ch
+}
+\fi
+
+% REMOVE THIS: bibentry
+% This is only needed to show inline citations in the guidelines document. You should not need it and can safely delete it.
+%\usepackage{bibentry}
+% END REMOVE bibentry
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+PICO recognition is an information extraction task for identifying Participant, Intervention, Comparator, and Outcome (PICO elements) information from clinical literature.
+Manually identifying PICO elements is the most time-consuming and cognitively demanding step for conducting clinical systematic reviews (SR) that form the basis of evidence-based clinical practice.Deep learning approaches can identify these entities from a heap of clinical texts in minutes which can otherwise take months per SR to complete.
+However, the lack of large, annotated corpora restricts innovation and adoption of automated PICO recognition systems.
+The largest-available PICO corpus is a manually annotated dataset that involved hiring and training medical students and physicians, which is uneconomical for a majority of the scientific community.
+To break through this bottleneck, we propose a novel distant supervision approach, DISTANT-CTO, or distantly supervised PICO extraction using clinical trials literature, to generate a massive weakly-labeled dataset with 977,682 high-quality ``Intervention'' and ``Comparator'' entity annotations.
+We use our insights to train distant NER (named-entity recognition) models using this weakly-labeled dataset and demonstrate that it outperforms even the sophisticated SOTA models trained on the manually annotated dataset with a 2\% F1 improvement over the I and C entities of the PICO benchmark and more than 5\% improvement when combined with the manually annotated dataset.
+We demonstrate the generalizability of our approach for under-represented, non-pharmaceutical entities by gaining an impressive F1-score on another domain-specific PICO benchmark.
+The approach is not only zero-cost but is also adaptable and scalable for a constant stream of PICO annotations.
+\end{abstract}
+%
+\section{Introduction}
+\label{sec:intro}
+%
+Evidence-based clinical practice bases medical decisions on the evidence summarized in the systematic reviews (SRs) from several primary clinical studies, mostly Randomized Controlled Trials (RCT).
+SRs are conducted to objectively answer clinical questions and require going through a rigorous process of manually screening tens of thousands of clinical studies for the identification of terms describing PICO.
+PICO identification is crucial to appraise the relevancy of a clinical study for answering the clinical question at hand and a study is only included for writing SRs if it mentions all or most pertinent PICO elements.
+Manual screening for PICO is a labor-intensive task requiring medical expertise consuming a sizeable chunk of more than 24 months required for conducting a single SR.
+The process can be automated using natural language processing and information extraction (IE) by directly pointing the human reviewers to the correct PICO descriptions in a study and automatically suggesting whether the study is relevant or not using machine reasoning over the detected descriptions.
+
+Automating PICO detection has garnered lower interest compared to the other biomedical named-entity recognition (NER) tasks primarily because of the lack of publicly available entity annotated corpora.
+The largest publicly-available PICO annotated dataset (EBM-PICO) contains only $\sim$5000 annotated abstracts; some of which were annotated through crowd-sourcing and others by medical experts hired using UpWork~\footnote{Upwork is an American freelancing platform where enterprises and individuals connect in order to conduct business.}~\cite{nye2018corpus}.
+Crowd-sourcing involved hiring non-expert workers that required intensive training that is not commonly affordable.
+Hiring multiple experts for annotation is equally often unaffordable.
+Nonetheless, EBM-PICO opened up avenues for improvement of automatic PICO extraction~\cite{gu2020domain}.
+In all the previous studies using EBM-PICO as a benchmark, the ``Intervention'' entity extraction had the worst performance, as this class is composed of several intervention sub-classes leading to a class heterogeneity challenge~\cite{jaseena2014issues, cardellino2017low}.
+Additionally, EBM-PICO has a heavy over-representation of the Interventions from the pharma domain (drug) in comparison to the others deteriorating performance on non-pharma interventions~\cite{dhrangadhariya2021multipico}.
+Extracting PICO in general is rather difficult because of high disagreement between human experts on the exact words constituting the mentions.
+
+Distant supervision (DS) allows generating massive weakly annotated datasets without the need of human annotators and has previously been used to generate large information extraction corpora for the general and biomedical domains.
+To address the aforesaid challenges and democratize PICO recognition, we propose DISTANT-CTO, a distantly supervised and scalable approach to obtain clinical trial annotations.
+We take an integrative approach combining methods of semi-supervised learning (SSL) and dynamic programming to develop a continuously extensible dataset.
+The approach is successfully demonstrated for the ``Intervention'' and ``Comparator'' entity annotations as a proof of concept (POC).
+We summarize our contributions as follows:
+
+\begin{itemize}
+    \item We develop a zero-cost, extensible approach using DS to obtain high confidence entity annotations.
+    \item Using our approach, we develop and make publicly available a large weakly-labeled dataset from more than 300,000 clinical trials. The dataset offers about a million sentences with more than 977,682 ``Intervention'' and ``Comparator'' annotations across 11 intervention types.
+    \item We improve the state-of-the-art by 2\% macro-F1 on the previously most poor-performing ``Intervention'' entity extraction on the EBM-PICO benchmark corpus without using any costly manually labeled data and by 5\% when combined with strongly labeled data.
+\end{itemize}
+%
+%
+%
+\section{Related Work}
+\label{sec:relworks}
+%
+This work aims to assess the feasibility of distantly supervised PICO annotation and extraction and thus the section reviews previous PICO extraction studies and methods concerning DS for IE.
+
+For about a decade, automatic PICO extraction was limited to the sentence-level due to the unavailability of entity-annotated corpora~\citep{boudin2010combining, huang2011classification, huang2013pico, wallace2016extracting, jin2018pico}.
+\citeauthor{nye2018corpus} released the EBM-PICO, a corpus with manually annotated PICO entities along with baseline ML models for their recognition paving a way for the community to improve upon the extraction task.
+The corpus is biased with pharma-based ``Intervention'' and ``Outcome'' labels overshadowing non-pharma ones and leading to the substandard performance on them~\citep{nye2018corpus,beltagy2019scibert,brockmeier2019improving,zhang2020unlocking}.
+Manual annotation projects are neither affordable nor scalable for every lab thereby limiting innovation.
+Besides, such small-scale annotation projects cannot capture the range and variation for the PICO descriptions spanning the entirety clinical trials literature.
+At some point, applications of such static corpora will confront the problem of insufficient and irrelevant annotations.
+
+A plethora of DS methods have been previously explored for large-scale relation extraction and only few for the entity extraction but mainly limited to general and biomedical (e.g., protein, drug mention recognition) domains~\cite{etzioni2008open,smirnova2018relation,adelani2020distant}.
+Entity extraction in high-impact clinical and sub-domains, however, still largely relies on small expert annotated datasets.
+Commonly, obtaining weak annotations using DS rely on aligning terms (a word or phrase) from handcrafted dictionaries constructed either from knowledgebases or ontologies (e.g. UMLS) onto unstructured text ~\citep{giannakopoulos2017unsupervised,yang2018distantly, ghiasvand2018learning,peng2019distantly,hedderich2021anea}.
+Carefully crafted dictionaries or ontologies are structured, standardized data sources, terms from which do not capture a myriad of writing variation from writing in clinical literature.
+Bootstrapping approaches like label propagation (LP) use a small strongly (manually) annotated dataset to obtain weak annotations for previously unlabeled data samples\cite{bing2017bootstrapping}.
+Due to heavy dependence on the quality of initial seed annotations, LP suffers from semantic drift~\cite{komachi2008graph,nagesh2018keep}.
+Alternatively weak annotations could be obtained using custom-built rules like regular expressions, but these are either restricted by task or worse even by entity type~\cite{ratner2017snorkel,safranchik2020weakly,fries2021ontology}.
+
+Our work focuses on overcoming the discussed annotation bottlenecks using an extensible DS approach to generate a large clinical entity annotated corpus and train a downstream NER model to assess if it yields adequate results.
+Unlike the reviewed DS approaches, our approach does not use massive unmanageable dictionaries or rules or LP, but rather uses methods from dynamic programming for flexibly aligning structured text in a clinical trials database to the free-text fields in the same database using an easily adaptable internal scoring scheme.
+%
+%
+%
+\section{Data}
+\label{sec:data}
+%
+Clinical trials are primary research studies aimed at evaluating effectiveness and safety of a medical, surgical, or behavioral therapy or intervention on human volunteers.
+ClinicalTrials.gov (CTO hereafter) is a database maintained by the U.S. National Library of Medicine (NLM) documenting 368,348 human clinical studies conducted around the globe.
+Information about each study stored on CTO is entered and updated by the principal investigator of the corresponding trial.
+Stored information includes the participant's eligibility criteria, participant disease or condition, interventions being evaluated, title and description of the study, participant demographics, study outcomes, \textit{etc.}
+This information can be downloaded in XML (Extensible Markup language) or JSON (JavaScript Object Notation) format.
+As we manipulate the XML format for our work, we will keep to discussing the information content on CTO from the XMLs rather than the GUI.
+
+This vast amount of information stored in XMLs and also displayed in the CTO GUI is a combination of structured tabular and unstructured free-text (see Figure~\ref{fig:CTO_example}).
+The `OfficialTitle' and `BriefTitle' tags in the XML store the official title of the study and a shorter version of title in an unstructured free-text format respectively.
+It also has `BriefSummary' and `DetailedDescription' tags under `DescriptionModule' as the study summaries stored in an unstructured free-text format.
+In this work, the ``Intervention'' and ``Comparator'' entities are clubbed into a single ``Intervention'' (I) class.
+Interventions used in the study are stored as lists under `InterventionList' tag.
+The tag lists down the interventions used in the study including the name of intervention under `InterventionName' tag and its semantic type under `InterventionType'.
+`InterventionType' could be either of the following: drug, device, behavioral, procedural, biological, dietary supplement, diagnostic test, radiation, genetic, combination product, other.
+`InterventionOtherName' tag lists synonyms of different `InterventionName' mentions.
+%`ArmGroupInterventionName' and `ArmGroupLabel' are two other tags containing intervention names.
+These intervention names are structured in a way that an intervention tag and its corresponding class predate each free-text intervention name linking it to the `Intervention' entity class.
+The `InterventionDescription' tag describes intervention administration procedure often in a detailed passage.
+%
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.95\columnwidth]{figures/CTOexample_cmyk.jpeg}
+\caption{An example CTO record (ID - NCT01929356) to demonstrate the information storage format which is a combination of structured table and unstructured text.}
+\label{fig:CTO_example}
+\end{figure}
+%
+%
+%
+\section{Approach}
+\label{sec:methods}
+%
+The approach is schematically illustrated in Figure~\ref{method:approach} and is elaborated below.
+%
+\subsection{Distant Supervision}
+\label{subsec:ds}
+%
+Distantly supervised (DS) information extraction (IE) is an efficient and SSL method~\cite{etzioni2008open,wen2019efficient}.
+It is utilized when the task at hand has 1) some strongly-labeled data, 2) abundant unlabeled data, and 3) a weak-labeling operator that could sample from this unlabeled data and label them using a heuristic function.
+This weak-labeling operator is a heuristic algorithm that uses a labeling heuristic to label the unlabeled data~\cite{pinto2003table, greaves2014relation}.
+It results into a weakly-labeled dataset with potential label noise.
+DS-IE models can then collectively use this strongly-labeled and the weakly-labeled training data to give the final output.
+%
+\subsection{Gestalt Pattern Matching}
+\label{subsec_gsp}
+%
+In entity extraction, the most common form of DS is to heuristically align terms from a structured information source onto unstructured text~\cite{wen2019efficient}.
+When flexible, this heuristic boils down to a substring matching problem whereby the weak-labeling operator aims to match the longest common substring (LCS) between the structured term and unstructured text.
+Gestalt Pattern Matching (GPM), also known as Ratcliff/Obershelp similarity algorithm is a string-matching algorithm for determining the similarity of two strings.
+The similarity between two strings $S_{1}$ and $S_{2}$ is measured by the formula, calculating twice the number of matching characters $K_{m}$ divided by the total length $|S_{1}| + |S_{2}|$.
+of both the strings.
+Matching characters are identified by the LCS algorithm followed by recursively finding matching characters in the non-matching regions on the either sides from both the strings.~\cite{ratcliff1988pattern}.
+%
+\begin{gather}
+  Similarity = \dfrac{ 2 K_{m}}{|S_{1}| + |S_{2}|} \: ; \: 0 \leq	 Similarity \leq	 1
+\end{gather}
+%
+$Similarity$ value ranges between 0, which means no match and 1 which means a complete match of the two strings.
+%
+\paragraph{Difflib: }
+It is a python module providing a {\tt sequencematcher} function that extends the GPM algorithm for comparing pairs of strings.
+{\tt sequencematcher} finds the longest contiguous subsequence between the sequence pair without the ``junk'' elements such as blank lines or white spaces.
+The same idea is then applied recursively to the flanks of the sequences to the left and the right of the matching subsequence.
+This yields matching sequences that appear normal to the human-eye.
+%
+\begin{figure*}[ht]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/candidategenerationcolor_cmyk.jpeg} 
+\caption{DISTANT-CTO approach - I) Distantly-supervised candidate generation approach, and II) Distantly-supervised NER model architecture.}.
+\label{method:approach}
+\end{figure*}
+%
+\subsection{Candidate Generation}
+\label{subsec:candgen}
+%
+We define distant candidate generation as the process of automatically generating entity-annotated sentences.
+%
+\paragraph{Assumption and Problem formulation: }
+Let each CTO record XML file be $r_i \in \boldsymbol{R}, i = \{ 1, 2, ... , I \}$.
+Let the intervention term in `InterventionName' tag and `InterventionOtherName' tag in the `InterventionList' array be intervention source $S_i$ which is a list of interventions $S = \{ s_1, s_2, ... , s_m \}$ used in the study $r_i$.
+Each intervention term $s_i \in S$ is linked to intervention class from `InterventionType' tag converting it into a tuple of $ \langle s_{class}, s_{name} \rangle$, $s_{name} =$ intervention name and $s_{class} =$ intervention category.
+$s_{name}$ is a sequence of words $\{ y_1, y_2, ... , y_n \}, n = \{ 1, 2, ... , N \} $.
+Let each sentence $t_i = \{ x_1, x_2, ... , x_m \}, m = \{ 1, 2, ... , M \}$ in the `BriefSummary', `DetailedDescription', `BriefTitle', `OfficialTitle' and `InterventionDescription' be a part of the intervention target set $T$.
+We assume that for each $s_{name}$ in $r_i$ there could exist a mapping to $t_i$ meaning $s_{name}$ is possibly either completely or partially mentioned in the $t_i$.
+Our goal is to build a scalable and adaptable candidate generation pipeline that maps each ``Intervention'' $s_{name}$ from the structured intervention source $S$ to the target sentences $t_i \in T$ (if a mapping exists).
+In this prototypical work, we focus on direct high-confidence matches between the $s_{name}$ and $t_i$ and keep the indirect low-confidence matches for future work.
+%
+\paragraph{Approach}
+For each individual CTO XML record $r_i$, we extract all $s_{name} \in S$ and $t_i \in T$ from the locally stored CTO dump.
+Both $S$ and $T$ are preprocessed by lower-casing, replacing hyphens and multiple trailing spaces with a single space and removal of Unicode characters.
+Given a $s_{name}$ and $t_i$, our aim is to identify and score (if identified) the mapping between both sequences.
+To map and score alignment from the $s_{name}$ to $t_i$, we use a distant matching module $D_m$ which is a combination of the {\tt sequencematcher} function and an internal scoring function $d_s$ to fetch high-confidence annotations.
+The {\tt sequencematcher} function takes as input $s_{term}$ and $t_i$ and outputs several matching blocks $d_{block} \in D_{blocks}$ between both strings.
+Each $d_{block} = \langle MatchPos_{t}, MatchPos_{s}, MatchLen \rangle $. 
+$MatchPos_{t}$ is the start of the match in $t_i$, $MatchPos_{s}$ is the start of the match in $s_{name}$ and $MatchLen$ is number of characters matching between the both.
+{\tt sequencematcher} provides an internal scoring function called as {\tt ratio} that returns a similarity score between the two sequences being matched.
+However, we do not use {\tt ratio} because it returns an overall matching score between the two full sequences $s_{name}$ and $t_i$ rather than a match score for $s_{name}$ and $d_{block}$.
+Instead, to identify the matching blocks that correspond to an exact match between an entire $s_{term}$ and a part of $t_i$, we calculate a match score $d_s$ for each matching block output by {\tt sequencematcher} using equation~\ref{eq:internalscore} which is dividing the number of matching characters in the match block $d_{block}$ by number of characters in $s_{name}$.
+%
+\begin{gather}
+\label{eq:internalscore}
+  d_s = \dfrac{ MatchLen }{ |s_{term}| } \: ; \: 0 \leq d_s \leq 1
+\end{gather}
+%
+Any $d_{block}$ above the $d_s$ score of 1.0 is considered as high-confidence accurate match and then the $s_{term}$ corresponding to the $d_{block}$ is mapped onto sentence $t_i$ to generate a positive annotation sentence $a_{+} \in A_{+}$.
+Using the $d_{block}$ with only the confidence 1.0 leads to missing out on several entities leading to an incomplete noisy weakly annotated dataset.
+Taking this into consideration, we retrieve the $d_{block}$ matching with $d_s$ score of 0.9 as fairly-accurate partial matches and extend the matching block to the target token ends (ending with flanking spaces).
+In the real-world data, not all sentences in clinical trial literature mention the ``Intervention'' entity and therefore in addition to the positive annotation sentences we require negative annotation sentences.
+We take $t_i$ and $s_{term}$ where no $d_{block}$ scored $d_s$ more than 0.20 to generate the negative annotation sentences $a_{-} \in A_{-}$.
+$A_{+}$ and $A_{-}$ are concatenated into $A_{+-}$ in a way that 50\% of randomly chosen $A_{+}$ sentences are clubbed with $A_{-}$ sentences.
+We call all the positive and the negative entity annotated sentences $A_{+-}$ our weakly annotated dataset.
+Next, for all $A_{+-}$ instances we fetch part-of-the-speech (POS) tags using {\tt POS-tagger} from NLTK (Natural Language Toolkit) resulting into $A_{+-POS}$~\cite{augenstein2017generalisation}.
+This alignment scheme misses out on sev
+{\tt difflib} in combination with the internal scoring function are previously unexplored for the purpose of automatic entity annotation generation. 
+%
+\subsection{Model Training}
+\label{subsec:training}
+%
+We train an end-to-end distant NER model with the model architecture (see Figure~\ref{method:approach}) using text inputs from our weakly annotated dataset and also the POS inputs.
+%
+\paragraph{1. Feature Extraction:}
+%
+Open-domain pre-trained language models (LM) like BERT, ULMFit and GPT rule out the need for heavy feature engineering and also tackle the the challenge of out-of-vocabulary (OOV) words using the WordPiece tokenizer and byte pair encoding (BPE)~\cite{devlin2018bert,joshi2019comparison}.
+Unfortunately, they encode limited semantic and syntactic information for domain-specific tasks.
+To capture the domain-specific information, we used SciBERT which was continually pretrained and domain adapted on the scientific literature from semantic scholar~\cite{gururangan2020don}.
+The proposed model used SciBERT to tokenize the text input $A_{+-}$ into encoded tokens $x_{t}$ and extract dense, contextual vectors $e_{t}$ from $x_{t}$ at each time-step $t$~\cite{beltagy2019scibert}.
+POS-inputs $A_{+-POS}$ were one-hot encoded into $p_{t}$ vectors.
+%
+\paragraph{2. Feature transformation:}
+%
+To encode long-term sequence dependencies from the input sequences and POS-tags, the model stacked a single bidirectional LSTM (BiLSTM) layer on top of the SciBERT layer~\cite{hochreiter1997long}.
+A forward LSTM ran from left-to-right (LTR) encoding the text into a $(\overrightarrow{h})$ vector using the current token embedding input $e_{t}$ and the previous hidden state $h_{t-1}$.
+A backward LSTM did the same in the opposite direction.
+$\overrightarrow{h}$ and $\overrightarrow{h}$ were shallowly concatenated $([\overrightarrow{h}; \overleftarrow{h}])$ into $h_{t}$ and used as the input for the next layer.
+Similarly, using a BiLSTM layer, the one-hot encoded POS-vectors $p_{t}$ underwent feature transformation and were concatenated $([\overrightarrow{h}_{POS}; \overleftarrow{h}_{POS}])$ into POS-features $h^{p}_{t}$.
+%
+\paragraph{3. Self-attention: }
+%
+Next, the model stacked a single-head self-attention layer that calculated for each POS-tag feature at time time $t$ in the sequence a weighted average of the feature representation of all other POS-tag features in the sequence~\cite{vaswani2017attention}.
+This improves the signal-to-noise ratio by out-weighting important POS-features.
+Self-attention weights for each POS-tag were calculated by multiplying hidden representation $h^{p}_{t}$ with randomly initialized Query $q$ and Key $k$ weights, which were further multiplied with each other to obtain attention weighted vectors.
+Finally, the obtained attention weights were multiplied with the Value (V) matrix which was obtained by multiplication between a randomly initialized weight matrix $v$ and $h_{t}$ finally obtaining scaled attention-weighted vectors $a^{p}_{t}$.
+Attention-weighted POS-representation and $h_{t-1}$ were shallow concatenated $([a^{p}_{t}; h_{t}])$ into vector.
+%
+\paragraph{4. Decoder:}
+%
+The attention-weighted representation $([a^{p}_{t}; h_{t}])$ was fed to a linear layer to predict the tag emission sequence $\hat{y_{t}}$ followed by a CRF layer that takes as input the $\hat{y_{t}}$ sequence along with the true tag $y_{t}$ sequence.
+CRF is a graph-based model suitable for learning tag sequence dependencies from the training set and has shown to outperform softmax classifiers~\cite{huang2015bidirectional}.
+%
+%
+%
+\section{Experiments}
+\label{sec:experiments}
+%
+The experiments were designed in order to evaluate performance of the distant NER models trained with our weakly annotated dataset alone \textit{vs.} weakly annotated dataset in combination with the EBM-PICO training set.
+The EBM-PICO training set is naturally composed of both positive and negative annotation sentences but for the DISTANT-CTO, we artificially generated the negative sentences $A_{-}$ (refer Section~\ref{subsec:candgen}).
+To evaluate the impact of these negative annotation sentences we perform ablation experiments, training the models only with positive annotation sentences $A_{+}$.
+Finally, we also evaluate the performance when training using the weak annotations with $d_s = 1.0$ alone \textit{vs.} when weak entity annotations with $d_s = 1.0$ are combined with $d_s \geq 0.9$.
+%
+\subsection{Benchmark datasets}
+\label{subsec:benchmark}
+%
+We evaluate our weakly annotated dataset and the proposed NER model on the below-described PICO benchmarks.
+%
+\begin{enumerate}[I]
+    \item \textbf{EBM-PICO gold.} The EBM-PICO dataset developed by Nye \textit{et al.} consists of 5000 PICO annotated documents~\footnote{A single document consists of a title and an abstract.}. It comes pre-divided into a training set (n=4,933) annotated through crowd-sourcing and an expert annotated test set (n=191) that was used for evaluation. We use the the training set for combined training experiments and the test set for evaluation purpose.
+    \item \textbf{Physio set.} A test set comprising 153 PICO annotated documents from Physiotherapy and Rehabilitation RCT's was used as an additional benchmark to evaluate the generalization power of the weakly annotated dataset and NER model for this sub-domain.
+\end{enumerate}
+%
+\subsection{Baselines}
+\label{subsec:base}
+%
+We compare our weakly annotated dataset and distant NER models with the following state-of-the-art supervised baseline methods that use train on the EBM-PICO training set and evaluate on EBM-PICO gold.
+%To compare the weakly annotated dataset and the distant NER model on the ``Intervention'' recognition on the PICO benchmark with four strong baselines trained on EBM-PICO dataset from the previous studies were used.
+\begin{itemize}
+    \item \textbf{b1:} Used word embeddings along with hand-engineered patterns to train LSTM-CRF model~\cite{nye2018corpus}. %Henning: should we not cite the reference for each baseline here %Anjani: Addressed
+    \item \textbf{b2:} Used pretrained SciBERT embeddings with a CRF decoder~\cite{beltagy2019scibert}.
+    \item \textbf{b3:} Used word embedding features followed by a BiLSTM-CRF model~\cite{brockmeier2019improving}.
+    \item \textbf{b4:} Used pretrained BERT with multilayered encoder-decoder architecture as detailed in~\cite{vaswani2017attention} with multi-head self-attention~\cite{stylianou2021transformed}.
+    %\item \textbf{b5:} Used pretrained BERT embeddings followed by a linear decoder.
+\end{itemize}
+%
+\subsection{Experimental Setup}
+\label{subsec:expsetup}
+%
+We define the following experimental setups based on the motivations described in section~\ref{sec:experiments}:
+\begin{itemize}
+    \item \textbf{Exp 1.0 distant $A_{+-}$ c[1/0.9] SciBERT wPOS} The setup is composed of SciBERT trained on the surface form and attention-weighted POS inputs using DISTANT-CTO set comprising confidence 1.0 and confidence 0.9 annotations with $A_{+-}$ sentences.
+    \item \textbf{Exp 1.1 distant $A_{+-}$ c[1] SciBERT wPOS} The setup is composed of SciBERT trained on the surface form and attention-weighted POS inputs using the DISTANT-CTO set comprising only the confidence 1.0 annotations with $A_{+-}$ sentences.
+    \item \textbf{Exp 1.2 distant $A_{+}$ c[1] SciBERT wPOS} The setup is composed of SciBERT trained on the surface form and attention-weighted POS inputs using DISTANT-CTO set comprising only the confidence 1.0 annotations with only $A_{+}$ sentences.
+    \item \textbf{Exp 2.0 - Exp 2.3 } These experiments are identical to their series 1.x counterparts except that the models are trained on a combination of the DISTANT-CTO with the EBM-PICO training set.
+\end{itemize}
+%
+\subsection{Evaluation}
+\label{subsec:eval}
+%
+The evaluation was carried out by predicting only the ``Intervention'' tokens for both the benchmarks.
+Each experiment was conducted thrice with three random seeds (0, 1 and 42) and the average metrics over three repetitions were reported.
+We evaluated the statistical significance of our best model using t-tests as described in~\cite{dror2018hitchhiker}.
+Token-level macro-average precision, recall, and F1 were tracked but the models were optimized on the F1-score of the minority class.
+Further experimental details are in the Appendix.
+%
+\section{Results}
+\label{sec:results}
+%
+This section reports empirical results of the candidate generation process and average of the performance metrics (see Table~\ref{tab:results_modeltraining}) on both the benchmark datasets for the described NER experiments (refer Section~\ref{subsec:expsetup}).
+The table also shows standard deviation $\sigma$ over macro-averaged F1-scores across three executions for the random seeds 0, 1 and 42.
+%
+\subsection{Candidate Generation}
+\label{subsec:res_cand}
+%
+A total of 360,395 CTO records were downloaded into a local CTO dump as of March 2021.
+From all the CTO records downloaded, we extract 200,545 unique (391,286 redundant) intervention names from the aforementioned intervention sources.
+Out of the 391,286 intervention terms retrieved, 104,433 terms were successfully mapped to one of the target sentences with a match confidence 1.0 and 3084 more were mapped with a confidence of 0.9.
+Adding confidence 0.9 mappings did not increase the total number of annotated sentences, but it did increase the number of annotations obtained in each sentence.
+The total number of entity-level and token-level ``Intervention'' annotations obtained from mapping the source terms to target sentences are shown in Table~\ref{table:res_candgen}.
+The total number of entity-level ``Intervention'' mentions in DISTANT-CTO are almost 30 times more than in the EBM-PICO dataset as shown in Table~\ref{table:candcomp}.
+Out of all the mention-level annotations in the DISTANT-CTO dataset, 59.90\% corresponded to ``Drug'' class and 40\% to the rest of 10 classes.
+For the EBM-PICO training set, 57.48\% of mentions fell under ``Drug'' class and the rest under six remaining classes.
+To further understand the characteristics of the weakly annotated dataset please refer the Appendix.
+%
+%
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{lrr}
+\hline \textbf{Total annotations} & \textbf{Confidence 1.0} & \textbf{Confidence 0.9} \\ \hline
+mention-level & 943,284 & 17,199 \\
+token-level & 1,515,868 & 43,096 \\
+\hline
+\end{tabular}
+\caption{Token-level and mention-level ``Intervention'' annotations obtained in the weakly annotated DISTANT-CTO dataset}
+\label{table:res_candgen} 
+\end{table}
+%
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{lrr}
+\hline \textbf{Total annotations} & \textbf{DISTANT-CTO} & \textbf{EBM-PICO} \\ \hline
+mention-level & 977,682 & 32,890\\
+token-level & 1,558,964 & 125,920 \\
+\hline
+\end{tabular}
+\caption{Comparison between DISTANT-CTO and EBM-PICO dataset in terms of the number of ``Intervention'' annotations in each dataset.}
+\label{table:candcomp} 
+\end{table}
+%
+%
+%
+%\begingroup
+\setlength{\tabcolsep}{4pt} % Default valueapproach: 6pt
+\renewcommand{\arraystretch}{1.0}
+\begin{table*}[hbt!]
+    \centering
+    \begin{tabular}{clccc|ccc}
+        \Xhline{1pt}
+         & Setup & \multicolumn{3}{c}{macro-averaged scores} \\
+        \Xhline{1pt}
+         & Train set & P & R & F1 $\pm\sigma$ & P & R & F1 $\pm\sigma$\\
+        \hline 
+        &  & \multicolumn{3}{c}{I. EBM-PICO gold} & \multicolumn{3}{c}{II. Physio set}  \\
+        \hline
+        b1 & EBM-PICO & 84.00 & 61.00 & 70.00 &  &  &\\
+        b2 & EBM-PICO & 61.00 & 70.00 & 65.00 &  &  &\\
+        b3 & EBM-PICO & 69.00 & 47.00 & 56.00 &  &  &\\
+        b4 & EBM-PICO & 69.04 & 79.24 & 73.29 &  &  &\\
+        \hline
+        \hline 
+        Exp 1.0 & DISTANT-CTO& 88.85 & 65.39 & 71.27 $\pm$0.007 & 86.13 & 63.70 & 69.14 $\pm$0.003\\
+        Exp 1.1 & DISTANT-CTO & 83.36 & 70.38 & 75.02 $\pm$0.013 & 79.45 & 66.28 & 70.63 $\pm$0.008\\
+        Exp 1.2 & DISTANT-CTO & 74.85 & 68.74 & 71.25 $\pm$0.005 & 70.52 & 66.37 & 68.14 $\pm$0.002 \\
+
+        Exp 2.0 & EBM-PICO + DISTANT-CTO & 76.93  & 80.17  & \textbf{78.44 } $\pm$0.006 & 75.55  & 79.42 & 77.32 $\pm$0.010\\
+        Exp 2.1 & EBM-PICO + DISTANT-CTO & 77.10 & 78.83 & 77.89 $\pm$0.007 & 76.29 & 80.18 & \textbf{78.07} $\pm$0.009\\
+        Exp 2.2 & EBM-PICO + DISTANT-CTO & 67.65 & 85.02 & 72.18 $\pm$0.009  & 64.80 & 83.69 & 68.75 $\pm$0.011 \\
+        \Xhline{1pt}
+    \end{tabular}
+    \caption{Macro-averaged performance metrics for the NER models trained on weakly annotated DISTANT-CTO alone \textit{vs.} in combination to the strongly annotated EBM-PICO on the two described benchmarks (EBM-PICO evaluation corpus and the Physio corpus). The results are compared with the baseline (b5) that used only EBM-PICO for training and results from the previous studies (b1-b4).} %Henning: the caption needs to be added %Anjani addressed
+    \label{tab:results_modeltraining}
+\end{table*}
+%\endgroup
+%
+\subsection{Model Training}
+\label{subsec:res_mod}
+%
+%The micro-averaged performance metrics (Precision, Recall and F1) on token-level ``Intervention'' entity across three experimental repetitions are provided in the table \ref{tab:results_modeltraining}.
+Using the DISTANT-CTO dataset alone with the distant NER approach (Exp 1.1 Table~\ref{tab:results_modeltraining}) described in Section~\ref{subsec:training}, crosses the SOTA F1-score (b4) on the EBM-PICO benchmark corpus by 2\%.
+However, the best F1-score for both benchmarks is reached upon training the distant NER models with combined weakly-labeled DISTANT-CTO with the strongly-labeled EBM-PICO dataset (EXP 2.1 Table~\ref{tab:results_modeltraining}).
+Although, using DISTANT-CTO alone has good precision across the experiment series 1.x, combining it with the EBM-PICO further improves the recall and balances out the F1-score in the experiment series 2.x.
+Adding the artificially generated negative sentences ($A_{-}$) increases the previous best F1-score by 5.71\% (compare Exp 2.2 with Exp 2.1) and 3.77\% (compare Exp 2.2 with Exp 2.1) for both experiment series and both benchmarks.
+It is important to notice that adding these negatives sentences results in an important improvement of about 10\% in the F1-score for the Physio dataset that is specific for the domain of physiotherapy and rehabilitation.
+For combined weak and strong annotation, addition of the confidence 0.9 annotations improves the F1-score as well by a small margin for the EBM-PICO benchmark (Exp 2.0 I.) by marginally improving the recall but performs a bit worse for the Physio benchmark (Exp 2.0 II.).
+While using the DISTANT-CTO alone with the confidence 0.9 annotations, boosts the precision but downgrades recall thereby reducing the F1-score for both benchmarks.
+%
+%
+%
+\section{Discussion}
+\label{sec:discussion}
+%
+The proposed candidate generation approach rapidly generates a large dataset with high confidence I and C entity-annotated sentences breaking through the bottleneck of costly manual annotations and pointing to a new direction of empirical research for clinical entity extraction.
+As soon as new clinical trials are added to the CTO, the approach can fetch new entity-annotated sentences thereby mitigating the problem of temporal drift and keeping the annotations relevant~\cite{derczynski2016broad}.
+The approach is not only zero-cost but is also an adaptable and quantifiable way to either completely or partially match terms to sentences that might express them as demonstrated by the confidence 1.0 and 0.9 entity-annotated sentences.
+%Henning: this phrase should be reformulated, as it is not really clear to me. %Anjani addressed
+%For relation extraction the candidate generation involves collecting triples (entity 1, relation, entity 2) from a knowledgebase (KB) and then matching the entities in these triples to an unstructured text corpus.
+%If both these entities are identified in a sentence, the sentence is assumed to express the relation between the entities and is labeled as positive example. %Henning: this phrase is also not really clear to me. It shoudl be cut in two, I think %Anjani: addressed
+%Even the sentences that do not express the relation in the triple are still forced to be labeled with this relation.
+%This leads to many false positive candidates~\cite{greaves2014relation}.
+For distant entity annotation using complete or partial sequence alignment as in our approach, the alignment heuristics might miss out on low confidence partial matches or indirect matches.
+For instance, although the intervention term `Home-based Rehabilitation using Interactive device' is expressed in the sentence `This study investigates clinical outcomes after the rehabilitation by interactive home-based device.', it will remain unmapped to it.
+This is because the term does not map to the sentence using our alignment heuristics.
+%Henning: also this phrase is not fully clear to me.
+These unmapped intervention terms, especially the composite mentions or phrase mentions that consist of more than two words, lead to many false negative candidates.
+%Henning: this phrase needs to be changed, what is meant here?
+Our approach also does not include any module that captures, disambiguates and aligns the abbreviations which are rampant in the intervention terms.
+%further adding to the false negatives.
+Such unmapped terms and abbreviations are the untapped potential that we will address in the future research by adapting the matching and scoring functions.
+
+%Henning: such bulleted lists need to be introduced and I do not see the link with the text before
+In all the experiments, combination of the weakly annotated and the strongly annotated datasets reach the best overall F1 score in comparison to using weak-annotations alone.
+This could be because the combination of weakly and the strongly annotated datasets reduce the percentage of unseen surface forms (words) from both the test sets.
+27.70\% of the intervention entity surface forms in the EBM-PICO gold benchmark remain unseen in the EBM-PICO training set while for the the DISTANT-CTO training set it drops to 21.38\%.
+27.29\% of the intervention entity surface forms in the Physio benchmark remain unseen in the EBM-PICO training set while for the the DISTANT-CTO training set it drops to 22.97\%.
+Combining both the training sets leads to a reduction in unseen surface forms to 16.29\% and 15.13\% for the EBM-PICO gold and Physio benchmarks respectively.
+It has been previously shown that F1 on unseen surface forms is significantly lower than F1 on seen surface forms for NER tasks~\cite{augenstein2017generalisation}.
+As demonstrated through the results, concatenation of the negative annotation candidates to the positive candidates, significantly improves the F1 score (Exp 1.1 and 2.1) for both the benchmarks.
+This shows that the distant NER model requires exploiting the sequence structure and dependencies from both the positive and negative as in the real-world clinical literature where not all sentences might express the ``Intervention'' entity.
+Addition of confidence 0.9 annotations while training with DISTANT-CTO alone, deteriorates metrics across the benchmarks likely increasing the errors (compare Figure~\ref{fig:cm1} with~\ref{fig:cm2}).
+Addition of confidence 0.9 annotations, however, improves recall for the combined training with DISTANT-CTO and EBM-PICO for the pharma-dominant dataset.
+Finally, our distantly annotated dataset and method also defy the status quo that training semi-supervised models with weak annotations alone leads to subpar performance in comparison to training with strong annotations~\cite{shang2018learning,jiang2021named}.
+%
+%
+\begin{figure}[!tbp]
+  \centering
+  \subfloat[Exp 1.1]{\includegraphics[width=0.45\columnwidth]{figures/confusion_matrix_cmyk.jpg}\label{fig:cm1}}
+  \hfill
+  \subfloat[Exp 1.0]{\includegraphics[width=0.45\columnwidth]{figures/confusion_matrix_lowscore_cmyk.jpg}\label{fig:cm2}}
+  \caption{Confusion matrices for the distant NER experiments Exp 1.1 and 1.0 on the EBM-PICO gold benchmark showing an increase in the errors.}
+\end{figure}
+%
+%
+%
+\section{Conclusion and Future Work}
+\label{sec:conclusion}
+%
+In this paper, we exploit the freely-available clinicaltrials.org (CTO) and distant supervision for developing the largest available weakly annotated database of Intervention-Comparator entities across 11 intervention sub-types.
+Using these weak annotations in combination to the manual annotations, we train an ``Intervention'' NER model that surpasses current approaches  by 5.44\% in terms of F1 on the only available PICO benchmark and demonstrate strong generalizability of the approach on a domain-specific physiotherapy corpus.
+When the same NER model was trained with the weakly annotated dataset alone it still surpassed other approaches by 2\%.
+This is a prototypical work and an automatically obtained dataset with I and C annotations is being extended for the Participant (P) entity.
+In the future, we aim to modify the internal matching and scoring to further alleviate the challenge of false negatives that are more prevalent in the composite and long-tail health NEs.
+%
+%\section{Acknowledgments}
+%\label{acknowledgements}
+%OoO
+%
+%
+%
+\bigskip
+%\clearpage
+% Use \bibliography{yourbibfile} instead or the References section will not appear in your paper
+%\nobibliography{aaai22}
+\bibliography{aaai22.bib}
+\clearpage
+\appendix
+\section{Appendices}
+\label{appendix}
+%
+\subsection{DISTANT-CTO characteristics}
+\label{app:char}
+%
+This section provides some standard statistics for DISTANT-CTO dataset.
+The pie chart (upper pie in Figure~\ref{app:classdist}) shows the class distribution of the semantic classes for the retrieved ``Intervention'' mentions $s_{name}$ about half of which fall under the ``drug'' (or Pharma) class and the rest under the remaining ten non-pharma classes.
+Out of the total retrieved mentions, almost two-thirds that get mapped to a target $t$ sentences also fall under the ``drug'' class (lower pie in Figure~\ref{app:classdist}).
+%
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1.0\columnwidth]{figures/mapped_unmapped_cmyk.jpeg}
+\caption{upper) Class distribution for the retrieved ``Intervention'' mentions, and lower) Class distribution for the mapped ``Intervention'' mention.}.
+\label{app:classdist}
+\end{figure}
+%
+%
+%
+Table~\ref{table:int_type10} and~\ref{table:int_type09} shows the number of retrieved intervention mentions by their semantic class \textit{vs.} the percentage of these intervention mentions that get mapped to some target sentence with the match score $d_s$ of 1.0 and score 0.9 respectively.
+Notice that collectively the intervention mentions that fall under the non-pharma classes outnumber the pharma (``drug'') mentions.
+Adding lower confidence (0.9) annotations increases the total percentage of interventions mapped from source to the target for each and every intervention class.
+%
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{lrl}
+\hline \textbf{Domain} & \textbf{ annotations retrieved - mapped } \\ \hline
+drug & 184835 - 65618 (35.50\%) \\
+device & 43134 - 8666 (20.09\%) \\
+other & 51703 - 8369 (16.19\%) \\
+procedure & 31630 - 6764 (21.38\%) \\
+behavioral & 33590 - 5383 (16.03\%) \\
+biological & 21225 - 4851 (22.86\%) \\
+dietary supplement & 11699 - 2979 (25.46\%) \\
+radiation & 4134 - 845 (20.44\%) \\
+diagnostic test & 6742 - 683 (10.13\%) \\
+combination product & 1070 - 154 (14.39\%) \\
+genetic & 1524 - 121 (07.94\%) \\
+all non-pharma & 206,451 - 38,815 (18.80\%)\\
+\hline
+\end{tabular}
+\caption{Number of intervention mentions retrieved \textit{vs.} percentage mapped with a confidence score of 1.0.}
+\label{table:int_type10} 
+\end{table}
+%
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{lrl}
+\hline \textbf{Domain} & \textbf{ annotations retrieved - mapped } \\ \hline
+drug & 184835 - 66951 (36.22\%) \\
+device & 43134 - 9114 (21.13\%) \\
+other & 51703 - 8709 (16.84\%) \\
+procedure & 31630 - 7010 (22.16\%) \\
+behavioral & 33590 - 5522 (16.44\%) \\
+biological & 21225 - 5109 (24.07\%) \\
+dietary supplement & 11699 - 3210 (27.44\%) \\
+radiation & 4134 - 875 (21.17\%) \\
+diagnostic test & 6742 - 727 (10.78\%) \\
+combination product & 1070 - 160 (14.95\%) \\
+genetic & 1524 - 130 (08.53\%) \\
+all non-pharma & 206,451 - 40,566 (19.64\%)\\
+\hline
+\end{tabular}
+\caption{Number of intervention mentions retrieved \textit{vs.} percentage mapped with a confidence score of 0.9.}
+\label{table:int_type09} 
+\end{table}
+%
+%
+%
+
+Top semantic classes for the most mapped and most unmapped intervention mentions from the total retrieved mentions are shown in the figure~\ref{app:unmapped_class_dist} and~\ref{app:mapped_class_dist}.
+As evident from the tables~\ref{table:int_type10} and~\ref{table:int_type09} ``drug'' class intervention mentions are the most mapped followed by ``dietary supplement'' and ``procedure'' classes which also reflects in the pie chart of most mapped lengths and common phrase lengths for each class (see Figure~\ref{app:mapped_class_dist}).
+The most frequent phrase lengths for these classes is one (unigram) and the second most frequent length is two (bigram).
+%
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=1.0\columnwidth]{figures/mapped_class_dist_cmyk.jpeg}
+\caption{Top five semantic classes, source intervention mentions from which get mapped to the target}.
+\label{app:mapped_class_dist}
+\end{figure}
+%
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{lrl}
+\hline \textbf{Domain} & \textbf{ Most common length } \\ \hline
+drug & 1 \\
+dietary supplement & 1 \\
+biological & 1 \\
+procedure & 2 \\
+device & 1 \\
+\hline
+\end{tabular}
+\caption{Lengths for the most mapped classes}
+\label{table:len_mapped_classes} 
+\end{table}
+%
+%
+The least mapped intervention mention classes are ``combination product'', ``diagnostic test'' and ``behavioral'' (refer figures~\ref{app:unmapped_class_dist}) with most intervention mentions in these classes containing either three (trigrams) or two (bigrams) words.
+This very well reflects with the numbers in figures~\ref{app:length_mappedunmapped} which shows that trigram and bigram intervention mentions constitute almost half the right pie showing the top phrase lengths for intervention mentions that remain unmapped.
+%
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=1.0\columnwidth]{figures/unmapped_class_dist_cmyk.jpeg}
+\caption{Top five semantic classes of the source intervention mentions that remain unmapped from the source to the target}.
+\label{app:unmapped_class_dist}
+\end{figure}
+%
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{lrl}
+\hline \textbf{Domain} & \textbf{ Most common length } \\ \hline
+device & 3 \\
+other & 2 \\
+behavioral & 3 \\
+diagnostic test & 2 \\
+combination product & 3 \\
+\hline
+\end{tabular}
+\caption{Lengths for the most unmapped classes}
+\label{table:len_unmapped_classes} 
+\end{table}
+%
+%
+%
+\begin{figure*}[hbt!]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/mention_lengths_distribution_cmyk.jpg}
+\caption{Left) Phrase length distribution of mapped intervention mentions, Right) Phrase length distribution of unmapped intervention mentions}.
+\label{app:length_mappedunmapped}
+\end{figure*}
+%
+%
+%
+
+
+One of the ways to retain some of the missed bigram and trigram intervention mentions is to explore the matches with lower confidence.
+Table~\ref{table:conf9exp} shows some of the 0.9 confidence source-target matches which didn't fall under the high-confidence 1.0 score because of difference of either a single missing space or singular-plural differences.
+It is interesting to note that the radiographic procedure ``cystourethrography'' matches the name of the test used ``cystourethrogram''.
+%
+\begin{table*}
+\begin{center}
+    \begin{tabular}{p{5cm}p{4cm}p{4cm}p{2cm}}
+    \hline \textbf{Characteristic} & \textbf{Source} & \textbf{Target} & \textbf{Confidence} \\ \hline
+    Single missing space & ``l carnitine'' & ``lcarnitine'' & 0.923\\
+    Missing negations & ``no pumice prophylaxis''&  ``pumice prophylaxis''  & 0.900\\
+    Plurals & ``punch skin biopsies'' &  ``punch skin biopsy''  & 0.941\\
+    Abbreviations & ``rfsh alone'' & ``recombinant fsh alone'' & 0.926\\
+    %Spelling mistakes & ``remestemcell'' & ``remestemcel l'' & 0.928\\
+    Specific treatment name to generic treatment name & ``biphasic insulin aspart 50'' & ``biphasic insulin aspart'' & 0.923\\
+    Procedure matches the intrument & ``cystourethrography'' & ``cystourethrogram'' & 0.900\\
+    \hline
+    \end{tabular}
+\end{center}
+\caption{Example ``Intervention'' mentions from CTO that get mapped to target sentences $t$ with a $d_{s}$ of 0.9}
+\label{table:conf9exp} 
+\end{table*} 
+%
+%
+%
+\subsection{Experimental Details}
+\label{app:expdet}
+%
+For the candidate generation process, we did not define any junk elements for using the {\tt sequencematcher} function.
+All the NER experiments in this article were conducted in PyTorch and thr models were trained for 10 epochs with a mini-batch size of 10 for training and 6 for evaluation.
+We used the IO (Inside, Outside) also called as raw labeling for all the NER tasks to make the experiments comparable with the previous studies.
+The maximum sequence length was set to 100 because the average length of each input text sequence was about 68 words.
+For both the experiments types, either using the DISTANT-CTO alone or with the EBM-PICO training set, 80\% of the data was used for training and 20\% for development.
+The [CLS] embeddings from BERT or SciBERT layer were used as features of the input text.
+SciBERT was fine-tuned by not freezing weights during the experiments.
+Hidden size for LSTM/BiLSTM was set to 512/1024 for the text input embeddings and 20/40 for the POS one-hot embeddings.
+ReLU was used as the activation function before feeding emission outputs to the CRF layer.
+Model training was optimized using AdamW using a learning rate of 5e-5.
+The gradients were clipped to 1.0 to mitigate problem of exploding gradients.
+Due to very specific RAM and GPU requirements for each experiment and the institute's capacity for sharing the GPU's amongst the group members, experiments were carried out on the following GPU's.
+Each experiment was carried out on the single GPU's without any data and model parallelization.
+%
+%
+\begin{table}[htp]
+\centering
+\begin{tabular}{l|l|l}
+\hline 
+\textbf{GPU} & \textbf{RAM} & \textbf{ Experiment }  \\
+\hline
+Tesla V100-PCIE-16GB & 1TB  & 1.1, 2.1\\
+TeslaK80 GPU & 126GB & 1.2, 2.2\\
+Tesla V100-PCIE-32GB & 1TB   & 2.0, 1.0\\
+\hline
+\end{tabular}
+\caption{Experiments and the details of GPUs they were carried out on.}
+\label{table:exp_gpu} 
+\end{table}
+%
+%
+%
+\section{Reproducibility Checklist}
+\label{check}
+%
+For the question: Does this paper include computational experiments? (yes/no) and the condition `All source code required for conducting experiments will be made publicly available upon publication of the paper with a license that allows free usage for research purposes', we answer `partial'.
+We will release the weakly annotated dataset along with the distant NER models (code and models themselves), but we plan to not release the code for candidate generation at the moment.
+All the code for the NER experiments and the weakly annotated dataset with the description of data structure will be released on Github with appropriate open-access license.
+%
+%
+%
+\section{Ethical Statement}
+\label{ethics}
+%
+This paper studies clinical NER with a small strongly labeled and large weakly labeled dataset.
+Our investigation neither introduces any social/ethical bias to the model nor amplifies any bias in the data.
+We do not foresee any direct social consequences or ethical issues.
+%
+%
+%
+\end{document}
