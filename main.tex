@@ -236,7 +236,7 @@ We summarize our contributions as follows:
 This work aims to assess the feasibility of distantly supervised PICO annotation and extraction and thus the section reviews previous PICO extraction studies and methods concerning DS for IE.
 
 For about a decade, automatic PICO extraction was limited to the sentence-level due to the unavailability of entity-annotated corpora~\citep{boudin2010combining, huang2011classification, huang2013pico, wallace2016extracting, jin2018pico}.
-\citeauthor{nye2018corpus} released the EBM-PICO, a corpus with manually annotated PICO entities along with baseline ML models for their recognition paving a way for the community to improve upon the extraction task.
+Nye \textit{et al.} released the EBM-PICO, a corpus with manually annotated PICO entities along with baseline ML models for their recognition paving a way for the community to improve upon the extraction task.
 The corpus is biased with pharma-based ``Intervention'' and ``Outcome'' labels overshadowing non-pharma ones and leading to the substandard performance on them~\citep{nye2018corpus,beltagy2019scibert,brockmeier2019improving,zhang2020unlocking}.
 Manual annotation projects are neither affordable nor scalable for every lab thereby limiting innovation.
 Besides, such small-scale annotation projects cannot capture the range and variation for the PICO descriptions spanning the entirety clinical trials literature.
@@ -426,13 +426,13 @@ We evaluate our weakly annotated dataset and the proposed NER model on the below
 \label{subsec:base}
 %
 We compare our weakly annotated dataset and distant NER models with the previous state-of-the-art supervised methods that use train on the EBM-PICO training and evaluate on EBM-PICO gold.
-%We also train an internal baseline b5.
+None of these baselines used additional features like POS tags.
 \begin{itemize}
     \item \textbf{b1:} Used word embeddings along with hand-engineered patterns to train LSTM-CRF model~\cite{nye2018corpus}. %Henning: should we not cite the reference for each baseline here %Anjani: Addressed
     \item \textbf{b2:} Used pretrained SciBERT embeddings with a CRF decoder~\cite{beltagy2019scibert}.
     \item \textbf{b3:} Used word embedding features followed by a BiLSTM-CRF model~\cite{brockmeier2019improving}.
     \item \textbf{b4:} Used pretrained BERT with multilayered encoder-decoder architecture as detailed in~\cite{vaswani2017attention} with multi-head self-attention~\cite{stylianou2021transformed}.
-    %\item \textbf{b5:} Used pretrained BERT embeddings followed by a CRF decoder.
+    \item \textbf{b5:} This was an \textit{in-house} baseline that used pretrained BERT embeddings followed by a BiLSTM transformer and a final CRF decoder.
 \end{itemize}
 %
 \subsection{Experimental Setup}
@@ -500,7 +500,6 @@ token-level & 1,558,964 & 125,920 \\
 %
 %
 %
-%\begingroup
 \setlength{\tabcolsep}{4pt} % Default valueapproach: 6pt
 \renewcommand{\arraystretch}{1.0}
 \begin{table*}[hbt!]
@@ -523,7 +522,6 @@ token-level & 1,558,964 & 125,920 \\
         Exp 1.0 & DISTANT-CTO& 88.85 & 65.39 & 71.27 $\pm$0.007 & 86.13 & 63.70 & 69.14 $\pm$0.003\\
         Exp 1.1 & DISTANT-CTO & 83.36 & 70.38 & 75.02 $\pm$0.013 & 79.45 & 66.28 & 70.63 $\pm$0.008\\
         Exp 1.2 & DISTANT-CTO & 74.85 & 68.74 & 71.25 $\pm$0.005 & 70.52 & 66.37 & 68.14 $\pm$0.002 \\
-        \Xhline 
         Exp 2.0 & EBM-PICO + DISTANT-CTO & 76.93  & 80.17  & \textbf{78.44}* $\pm$0.006 & 75.55  & 79.42 & 77.32 $\pm$0.010\\
         Exp 2.1 & EBM-PICO + DISTANT-CTO & 77.10 & 78.83 & 77.89 $\pm$0.007 & 76.29 & 80.18 & \textbf{78.07}* $\pm$0.009\\
         Exp 2.2 & EBM-PICO + DISTANT-CTO & 67.65 & 85.02 & 72.18 $\pm$0.009  & 64.80 & 83.69 & 68.75 $\pm$0.011 \\
@@ -801,7 +799,7 @@ Tesla V100-PCIE-32GB & 1TB   & 2.0, 1.0\\
 \section{Reproducibility Checklist}
 \label{check}
 %
-For the question: Does this paper include computational experiments? (yes/no) and the condition `All source code required for conducting experiments will be made publicly available upon publication of the paper with a license that allows free usage for research purposes', we answer `partial'.
+For the question: Does this paper include computational experiments? (yes/no) and the condition `All source code required for conducting experiments will be made publicly available upon publication of the paper with a license that allows free usage for research purposes', we answer \textbf{`partial'}.
 We will release the weakly annotated dataset along with the distant NER models (code and models themselves), but we plan to not release the code for candidate generation at the moment.
 All the code for the NER experiments and the weakly annotated dataset with the description of data structure will be released on Github with appropriate open-access license.
 %
