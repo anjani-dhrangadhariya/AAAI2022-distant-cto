@@ -191,7 +191,7 @@
 
 \begin{abstract}
 PICO recognition is an information extraction task for identifying Participant, Intervention, Comparator, and Outcome (PICO elements) information from clinical literature.
-Manually identifying PICO elements is the most time-consuming and cognitively demanding step for conducting clinical systematic reviews (SR) that form the basis of evidence-based clinical practice. Deep learning approaches can identify these entities from a set of clinical texts in minutes which can otherwise take months per SR to complete.
+Manually identifying PICO elements is the most time-consuming and cognitively demanding step for conducting systematic reviews (SR) that form the basis of evidence-based clinical practice. Deep learning approaches can identify these entities from a set of clinical texts in minutes which can otherwise take months per SR to complete.
 However, the lack of large, annotated corpora restricts innovation and adoption of automated PICO recognition systems.
 The largest-available PICO corpus is a manually annotated dataset that involved hiring and training medical students and physicians, which is too expensive for a majority of the scientific community.
 To break through this bottleneck, we propose a novel distant supervision approach, DISTANT-CTO, or distantly supervised PICO extraction using the clinical trials literature, to generate a massive weakly-labeled dataset with 977,682 high-quality ``Intervention'' and ``Comparator'' entity annotations.
@@ -215,7 +215,8 @@ Crowd-sourcing involved hiring non-expert workers that required intensive traini
 Hiring multiple experts for annotation is equally often too expensive.
 Nonetheless, EBM-PICO opened up avenues for improvement of automatic PICO extraction~\cite{gu2020domain}.
 In all the previous studies using EBM-PICO as a benchmark, the ``Intervention'' entity extraction had the worst performance, as this class is composed of several intervention sub-classes leading to a class heterogeneity challenge~\cite{jaseena2014issues, cardellino2017low}.
-Additionally, EBM-PICO has a heavy over-representation of the Interventions from the pharma domain (drug) in comparison to the others deteriorating performance on non-pharma interventions~\cite{dhrangadhariya2021multipico}.
+Additionally, EBM-PICO has a heavy over-representation of the Interventions from the pharma domain (drug) in comparison to the others deteriorating performance on non-pharma interventions.
+%~\cite{dhrangadhariya2021multipico}.
 Extracting PICO in general is rather difficult because of high disagreement between human experts on the exact words constituting the mentions.
 
 Distant supervision (DS) allows generating massive weakly annotated datasets without the need of human annotators and has previously been used to generate large information extraction corpora for the general and biomedical domains.
@@ -227,7 +228,7 @@ We summarize our contributions as follows:
 \begin{itemize}
     \item We develop a zero-cost, extensible approach using DS to obtain high confidence entity annotations.
     \item Using our approach, we develop and make publicly available a large weakly-labeled dataset from more than 300,000 clinical trials. The dataset offers about a million sentences with more than 977,682 ``Intervention'' and ``Comparator'' annotations across 11 intervention types.
-    \item We improve the state-of-the-art by 2\% macro-F1 on the previously most poor-performing ``Intervention'' entity extraction on the EBM-PICO benchmark corpus without using any costly manually labeled data and by 5\% when combined with strongly labeled data.
+    \item We improve the state-of-the-art by 2\% macro-F1 on the previously most poor-performing ``Intervention'' entity extraction on the EBM-PICO benchmark corpus without using any costly manually (strongly) labeled data and by 5\% when combined with strongly labeled data.
 \end{itemize}
 %
 \section{Related Work}
@@ -236,17 +237,17 @@ We summarize our contributions as follows:
 This work aims to assess the feasibility of distantly supervised PICO annotation and extraction and thus the section reviews previous PICO extraction studies and methods concerning DS for IE.
 
 For about a decade, automatic PICO extraction was limited to the sentence-level due to the unavailability of entity-annotated corpora~\citep{boudin2010combining, huang2011classification, huang2013pico, wallace2016extracting, jin2018pico}.
-Nye \textit{et al.} released the EBM-PICO, a corpus with manually annotated PICO entities along with baseline ML models for their recognition paving a way for the community to improve upon the extraction task.
+Nye \textit{et al.} released EBM-PICO, a corpus with manually annotated PICO entities along with baseline ML models for their recognition paving a way for the community to improve upon the extraction task.
 The corpus is biased with pharma-based ``Intervention'' and ``Outcome'' labels overshadowing non-pharma ones and leading to the substandard performance on them~\citep{nye2018corpus,beltagy2019scibert,brockmeier2019improving,zhang2020unlocking}.
 Manual annotation projects are neither affordable nor scalable for every lab thereby limiting innovation.
-Besides, such small-scale annotation projects cannot capture the range and variation for the PICO descriptions spanning the entirety clinical trials literature.
+Besides, such small-scale annotation projects cannot capture the range and variation for the PICO descriptions spanning the entirety of clinical trials literature.
 At some point, applications of such static corpora will confront the problem of insufficient and irrelevant annotations.
 
 A plethora of DS methods were previously explored for large-scale relation extraction and only few for the entity extraction but mainly limited to general and biomedical (e.g., protein, drug mention recognition) domains~\cite{etzioni2008open,smirnova2018relation,adelani2020distant}.
 Entity extraction in high-impact clinical and other domains, however, still largely relies on small expert annotated datasets.
-Commonly, obtaining weak annotations using DS rely on aligning terms (a word or phrase) from handcrafted dictionaries constructed either from knowledge bases or ontologies (e.g. UMLS) onto unstructured text ~\citep{giannakopoulos2017unsupervised,yang2018distantly, ghiasvand2018learning,peng2019distantly,hedderich2021anea}.
+Commonly, obtaining weak annotations using DS rely on aligning terms (a word or phrase) from handcrafted dictionaries constructed either from knowledge bases or ontologies onto unstructured text ~\citep{giannakopoulos2017unsupervised,yang2018distantly, ghiasvand2018learning,peng2019distantly,hedderich2021anea}.
 Carefully crafted dictionaries or ontologies are structured, standardized data sources, terms from which do not capture a myriad of writing variation from writing in clinical literature.
-Bootstrapping approaches like label propagation (LP) use a small strongly (manually) annotated dataset to obtain weak annotations for previously unlabeled data samples\cite{bing2017bootstrapping}.
+Bootstrapping approaches like label propagation (LP) use a small strongly annotated dataset to obtain weak annotations for previously unlabeled data samples~\cite{bing2017bootstrapping}.
 Due to heavy dependence on the quality of initial seed annotations, LP suffers from semantic drift~\cite{komachi2008graph,nagesh2018keep}.
 Alternatively weak annotations could be obtained using custom-built rules like regular expressions, but these are either restricted by task or worse even by entity type~\cite{ratner2017snorkel,safranchik2020weakly,fries2021ontology}.
 
@@ -277,7 +278,7 @@ The `InterventionDescription' tag describes intervention administration procedur
 %
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.9\columnwidth]{figures/CTOexample_cmyk.jpeg}
+\includegraphics[width=0.95\columnwidth]{figures/CTOexample_cmyk.jpeg}
 \caption{An example CTO record (ID - NCT01929356) to demonstrate the information storage format which is a combination of structured table and unstructured text.}
 \label{fig:CTO_example}
 \end{figure}
@@ -290,7 +291,7 @@ The approach is schematically illustrated in Figure~\ref{method:approach} and is
 \subsection{Distant Supervision}
 \label{subsec:ds}
 %
-Distantly supervised (DS) information extraction (IE) is an efficient and SSL method~\cite{etzioni2008open,wen2019efficient}.
+Distantly supervised (DS) information extraction (IE) is an efficient SSL method~\cite{etzioni2008open,wen2019efficient}.
 It is used when the task at hand has 1) some strongly-labeled data, 2) abundant unlabeled data, and 3) a weak-labeling operator that could sample from this unlabeled data and label them using a heuristic function.
 This weak-labeling operator is a heuristic algorithm that uses a labeling heuristic to label the unlabeled data~\cite{pinto2003table, greaves2014relation}.
 It results into a weakly-labeled dataset with potential label noise.
@@ -302,8 +303,7 @@ DS-IE models can then collectively use this strongly-labeled and the weakly-labe
 In entity extraction, the most common form of DS is to heuristically align terms from a structured information source onto unstructured text~\cite{wen2019efficient}.
 When flexible, this heuristic boils down to a substring matching problem whereby the weak-labeling operator aims to match the longest common substring (LCS) between the structured term and unstructured text.
 Gestalt Pattern Matching (GPM), also known as Ratcliff/Obershelp similarity algorithm is a string-matching algorithm for determining the similarity of two strings.
-The similarity between two strings $S_{1}$ and $S_{2}$ is measured by the formula, calculating twice the number of matching characters $K_{m}$ divided by the total length $|S_{1}| + |S_{2}|$.
-of both strings.
+The similarity between two strings $S_{1}$ and $S_{2}$ is measured by the formula, calculating twice the number of matching characters $K_{m}$ divided by the total length $|S_{1}| + |S_{2}|$ of both strings.
 Matching characters are identified by the LCS algorithm followed by recursively finding matching characters in the non-matching regions on the either sides from both strings.~\cite{ratcliff1988pattern}.
 %
 \begin{gather}
@@ -320,7 +320,7 @@ This yields matching sequences that appear normal to the human-eye.
 %
 \begin{figure*}[ht]
 \centering
-\includegraphics[width=0.8\textwidth]{figures/candidategenerationcolor_cmyk.jpeg} 
+\includegraphics[width=0.9\textwidth]{figures/candidategenerationcolor_cmyk.jpeg} 
 \caption{DISTANT-CTO approach - I) Distantly-supervised candidate generation approach, and II) Distantly-supervised NER model architecture.}.
 \label{method:approach}
 \end{figure*}
@@ -331,6 +331,7 @@ This yields matching sequences that appear normal to the human-eye.
 We define distant candidate generation as the process of automatically generating entity-annotated sentences.
 %
 \paragraph{Assumption and Problem formulation: }
+As ``Intervention'' and ``Comparator'' entities both represent interventions in two different roles in clinical trials, they are clubbed into a single ``Intervention'' entity class.
 Let each CTO record XML file be $r_i \in \boldsymbol{R}, i = \{ 1, 2, ... , I \}$.
 Let the intervention term in `InterventionName' tag and `InterventionOtherName' tag in the `InterventionList' array be intervention source $S_i$ which is a list of interventions $S = \{ s_1, s_2, ... , s_m \}$ used in the study $r_i$.
 Each intervention term $s_i \in S$ is linked to intervention class from `InterventionType' tag converting it into a tuple of $ \langle s_{class}, s_{name} \rangle$, $s_{name} =$ intervention name and $s_{class} =$ intervention category.
@@ -362,16 +363,16 @@ Using the $d_{block}$ with only the confidence 1.0 leads to missing out on sever
 Taking this into consideration, we retrieve the $d_{block}$ matching with $d_s$ score of 0.9 as fairly-accurate partial matches and extend the matching block to the target token ends (ending with flanking spaces).
 In the real-world data, not all sentences in clinical trial literature mention the ``Intervention'' entity and therefore in addition to the positive annotation sentences we require negative annotation sentences.
 We take $t_i$ and $s_{term}$ where no $d_{block}$ scored $d_s$ more than 0.20 to generate the negative annotation sentences $a_{-} \in A_{-}$.
-$A_{+}$ and $A_{-}$ are concatenated into $A_{+-}$ in a way that 50\% of randomly chosen $A_{+}$ sentences are clubbed with $A_{-}$ sentences.
-We call all the positive and the negative entity annotated sentences $A_{+-}$ our weakly annotated dataset.
-Next, for all $A_{+-}$ instances we fetch part-of-the-speech (POS) tags using {\tt POS-tagger} from NLTK (Natural Language Toolkit) resulting into $A_{+-POS}$~\cite{augenstein2017generalisation}.
-This alignment scheme misses out on sev
+For the targets $t$ comprising more than one sentence and containing both $a_{+}$ and $a_{-}$ candidates, we slice them into groups of four.
+We call all these sequences comprised of the positive and the negative entity annotated sentences $A_{+-}$ our weakly annotated dataset.
+Next, for all $A_{+-}$ instances we fetch part-of-the-speech (POS) tags using {\tt POS-tagger} from NLTK (Natural Language Toolkit) resulting into $A_{+-POS}$.
+POS tags are added as additional features as they have shown to help model generalization~\cite{augenstein2017generalisation}.
 {\tt difflib} in combination with the internal scoring function are previously unexplored for the purpose of automatic entity annotation generation. 
 %
 \subsection{Model Training}
 \label{subsec:training}
 %
-We train an end-to-end distant NER model with the model architecture (see Figure~\ref{method:approach}) using text inputs from our weakly annotated dataset and also the POS inputs.
+We train an end-to-end distant NER model with the model architecture (see Figure~\ref{method:approach}) using text and POS inputs from our weakly annotated dataset.
 %
 \paragraph{1. Feature Extraction:}
 %
@@ -426,13 +427,13 @@ We evaluate our weakly annotated dataset and the proposed NER model on the below
 \label{subsec:base}
 %
 We compare our weakly annotated dataset and distant NER models with the previous state-of-the-art supervised methods that use train on the EBM-PICO training and evaluate on EBM-PICO gold.
-None of these baselines used additional features like POS tags.
+%None of these baselines used additional features like POS tags.
 \begin{itemize}
-    \item \textbf{b1:} Used word embeddings along with hand-engineered patterns to train LSTM-CRF model~\cite{nye2018corpus}. %Henning: should we not cite the reference for each baseline here %Anjani: Addressed
+    \item \textbf{b1:} Used word embeddings along with hand-engineered patterns to train LSTM-CRF model~\cite{nye2018corpus}.
     \item \textbf{b2:} Used pretrained SciBERT embeddings with a CRF decoder~\cite{beltagy2019scibert}.
     \item \textbf{b3:} Used word embedding features followed by a BiLSTM-CRF model~\cite{brockmeier2019improving}.
     \item \textbf{b4:} Used pretrained BERT with multilayered encoder-decoder architecture as detailed in~\cite{vaswani2017attention} with multi-head self-attention~\cite{stylianou2021transformed}.
-    \item \textbf{b5:} This was an \textit{in-house} baseline that used pretrained BERT embeddings followed by a BiLSTM transformer and a final CRF decoder.
+    %\item \textbf{b5:} This was an \textit{in-house} baseline that used pretrained BERT embeddings followed by a BiLSTM transformer and a final CRF decoder.
 \end{itemize}
 %
 \subsection{Experimental Setup}
@@ -482,7 +483,7 @@ mention-level & 943,284 & 17,199 \\
 token-level & 1,515,868 & 43,096 \\
 \hline
 \end{tabular}
-\caption{Token-level and mention-level ``Intervention'' annotations obtained in the weakly annotated DISTANT-CTO dataset}
+\caption{Token-level and mention-level ``Intervention'' annotations obtained in the weakly annotated DISTANT-CTO dataset.}
 \label{table:res_candgen} 
 \end{table}
 %
@@ -494,7 +495,7 @@ mention-level & 977,682 & 32,890\\
 token-level & 1,558,964 & 125,920 \\
 \hline
 \end{tabular}
-\caption{Comparison between DISTANT-CTO and EBM-PICO dataset in terms of the number of ``Intervention'' annotations in each dataset.}
+\caption{Comparing the number of ``Intervention'' annotations in DISTANT-CTO \textit{vs.} EBM-PICO.}
 \label{table:candcomp} 
 \end{table}
 %
@@ -516,7 +517,7 @@ token-level & 1,558,964 & 125,920 \\
         b2 & EBM-PICO & 61.00 & 70.00 & 65.00 &  &  &\\
         b3 & EBM-PICO & 69.00 & 47.00 & 56.00 &  &  &\\
         b4 & EBM-PICO & 69.04 & 79.24 & 73.29 &  &  &\\
-        b5 & EBM-PICO & 69.04 & 79.24 & 73.29 &  &  &\\
+        %b5 & EBM-PICO & 77.45 & 70.71 & 73.49 $\pm$0.0008 & 77.36 & 72.31  & 74.52$\pm$0.0001\\
         \hline
         \hline 
         Exp 1.0 & DISTANT-CTO& 88.85 & 65.39 & 71.27 $\pm$0.007 & 86.13 & 63.70 & 69.14 $\pm$0.003\\
@@ -535,9 +536,10 @@ token-level & 1,558,964 & 125,920 \\
 \subsection{Model Training}
 \label{subsec:res_mod}
 %
-Using the DISTANT-CTO dataset alone with the distant NER approach (Exp 1.1 Table~\ref{tab:results_modeltraining}) described in Section~\ref{subsec:training}, crosses the SOTA F1-score (b4) on the EBM-PICO benchmark corpus by 2\%.
+Using the DISTANT-CTO dataset alone with the distant NER approach (Exp 1.1 Table~\ref{tab:results_modeltraining}) crosses the previous SOTA F1-score (b4) on the EBM-PICO benchmark corpus by 2\%.
 However, the best F1-score for both benchmarks is reached upon training the distant NER models with combined weakly-labeled DISTANT-CTO with the strongly-labeled EBM-PICO dataset.
-The improvement in F1 for the combined experiments (see Exp 2.1 and 2.0 Table~\ref{tab:results_modeltraining})) is significant when compared to the their best DISTANT-CTO counterparts (see Exp 1.1 Table~\ref{tab:results_modeltraining})) as per the t-test with p-value of 0.02.
+The improvement in F1 for the combined experiments (see Exp 2.1 and 2.0 Table~\ref{tab:results_modeltraining})) is significant when compared to the their best DISTANT-CTO counterparts (see Exp 1.1 Table~\ref{tab:results_modeltraining})).
+%and also the baseline b5.
 Although, using DISTANT-CTO alone has good precision across the experiment series 1.x, combining it with the EBM-PICO further improves the recall and balances out the F1-score in the experiment series 2.x.
 Adding the artificially generated negative sentences ($A_{-}$) increases the previous best F1-score by 5.71\% (compare Exp 2.2 with Exp 2.1) and 3.77\% (compare Exp 2.2 with Exp 2.1) for both experiment series and both benchmarks.
 It is important to notice that adding these negatives sentences results in an important improvement of about 10\% in the F1-score for the Physio dataset that is specific for the domain of physiotherapy and rehabilitation.
@@ -553,7 +555,7 @@ The proposed candidate generation approach rapidly generates a large dataset wit
 As soon as new clinical trials are added to the CTO, the approach can fetch new entity-annotated sentences thereby mitigating the problem of temporal drift and keeping the annotations relevant~\cite{derczynski2016broad}.
 The approach is not only zero-cost but is also an adaptable and quantifiable way to either completely or partially match terms to sentences that might express them as demonstrated by the confidence 1.0 and 0.9 entity-annotated sentences.
 %For relation extraction the candidate generation involves collecting triples (entity 1, relation, entity 2) from a knowledgebase (KB) and then matching the entities in these triples to an unstructured text corpus.
-%If both these entities are identified in a sentence, the sentence is assumed to express the relation between the entities and is labeled as positive example. %Henning: this phrase is also not really clear to me. It shoudl be cut in two, I think %Anjani: addressed
+%If both these entities are identified in a sentence, the sentence is assumed to express the relation between the entities and is labeled as positive example.
 %Even the sentences that do not express the relation in the triple are still forced to be labeled with this relation.
 %This leads to many false positive candidates~\cite{greaves2014relation}.
 For distant entity annotation using partial sequence alignment as in our approach, the alignment heuristics might miss out on low confidence partial or indirect matches.
@@ -569,16 +571,16 @@ Combining both training sets leads to a reduction in unseen surface forms to 16.
 It has been previously shown that recall on unseen surface forms is significantly lower than recall on seen surface forms for NER tasks~\cite{augenstein2017generalisation}.
 As demonstrated through the results, concatenation of the negative annotation candidates to the positive candidates improves the F1 (compare Exp 1.1 and 2.1 with Exp 1.2 and 2.2) for both benchmarks.
 This shows that the distant NER model requires exploiting the sequence structure and dependencies from both positive and negative examples as in the real-world clinical literature where not all sentences might express the ``Intervention'' entity.
-Addition of confidence 0.9 annotations while training with DISTANT-CTO alone, deteriorates metrics across the benchmarks likely increasing the errors (compare Figure~\ref{fig:cm1} with~\ref{fig:cm2}).
+Addition of confidence 0.9 annotations while training with DISTANT-CTO alone, deteriorates metrics across the benchmarks increasing the errors (compare Figure~\ref{fig:cm1} with~\ref{fig:cm2}).
 Addition of confidence 0.9 annotations, however, improves recall for the combined training with DISTANT-CTO and EBM-PICO for the pharma-dominant dataset.
-Finally, our distantly annotated dataset and method also defy the status quo that training semi-supervised models with weak annotations alone leads to subpar performance in comparison to training with strong annotations~\cite{shang2018learning,jiang2021named}.
+%Finally, our distantly annotated dataset and method also defy the status quo that training semi-supervised models with weak annotations alone leads to subpar performance in comparison to training with strong annotations~\cite{shang2018learning,jiang2021named}.
 %
 %
 \begin{figure}[!tbp]
   \centering
-  \subfloat[Exp 1.1]{\includegraphics[width=0.45\columnwidth]{figures/confusion_matrix_cmyk.jpg}\label{fig:cm1}}
+  \subfloat[Exp 1.1]{\includegraphics[width=0.46\columnwidth]{figures/confusion_matrix_cmyk.jpg}\label{fig:cm1}}
   \hfill
-  \subfloat[Exp 1.0]{\includegraphics[width=0.45\columnwidth]{figures/confusion_matrix_lowscore_cmyk.jpg}\label{fig:cm2}}
+  \subfloat[Exp 1.0]{\includegraphics[width=0.46\columnwidth]{figures/confusion_matrix_lowscore_cmyk.jpg}\label{fig:cm2}}
   \caption{Confusion matrices for the distant NER experiments Exp 1.1 and 1.0 on the EBM-PICO gold benchmark showing an increase in the errors.}
 \end{figure}
 %
@@ -586,7 +588,7 @@ Finally, our distantly annotated dataset and method also defy the status quo tha
 \label{sec:conclusion}
 %
 In this paper, we exploit the freely-available clinicaltrials.org (CTO) and distant supervision for developing the largest available weakly annotated database of Intervention-Comparator entities across 11 intervention sub-types.
-Using these weak annotations in combination to the manual annotations, we train an ``Intervention'' NER model that surpasses current approaches  by 5.44\% in terms of F1 on the only available PICO benchmark and demonstrate strong generalizability of the approach on a domain-specific physiotherapy corpus.
+Using these weak annotations in combination to the manual annotations, we train an ``Intervention'' NER model that surpasses current approaches by more than 5\% in terms of F1 on the only available PICO benchmark and demonstrate strong generalizability of the approach on a domain-specific physiotherapy corpus.
 When the same NER model was trained with the weakly annotated dataset alone it still surpassed other approaches by 2\%.
 This is a prototypical work and an automatically obtained dataset with I and C annotations is being extended for the Participant (P) entity.
 In the future, we aim to modify the internal matching and scoring to further alleviate the challenge of false negatives that are more prevalent in the composite and long-tail health NEs.
@@ -596,7 +598,6 @@ In the future, we aim to modify the internal matching and scoring to further all
 %OoO
 %
 \bigskip
-%\clearpage
 % Use \bibliography{yourbibfile} instead or the References section will not appear in your paper
 %\nobibliography{aaai22}
 \bibliography{aaai22.bib}
@@ -643,7 +644,7 @@ genetic & 1524 - 121 (07.94\%) \\
 all non-pharma & 206,451 - 38,815 (18.80\%)\\
 \hline
 \end{tabular}
-\caption{Number of intervention mentions retrieved \textit{vs.} percentage mapped with a confidence score of 1.0.}
+\caption{Number of intervention mentions retrieved \textit{vs.} percentage mapped with a confidence score of 1.0}
 \label{table:int_type10} 
 \end{table}
 %
@@ -665,7 +666,7 @@ genetic & 1524 - 130 (08.53\%) \\
 all non-pharma & 206,451 - 40,566 (19.64\%)\\
 \hline
 \end{tabular}
-\caption{Number of intervention mentions retrieved \textit{vs.} percentage mapped with a confidence score of 0.9.}
+\caption{Number of intervention mentions retrieved \textit{vs.} percentage mapped with a confidence score of 0.9}
 \label{table:int_type09} 
 \end{table}
 %
@@ -679,7 +680,7 @@ The most frequent phrase lengths for these classes is one (unigram) and the seco
 \begin{figure}[hbt!]
 \centering
 \includegraphics[width=1.0\columnwidth]{figures/mapped_class_dist_cmyk.jpeg}
-\caption{Top five semantic classes, source intervention mentions from which get mapped to the target}.
+\caption{Top five semantic classes, source intervention mentions from which get mapped to the target.}.
 \label{app:mapped_class_dist}
 \end{figure}
 %
@@ -705,7 +706,7 @@ This very well reflects with the numbers in figures~\ref{app:length_mappedunmapp
 \begin{figure}[hbt!]
 \centering
 \includegraphics[width=1.0\columnwidth]{figures/unmapped_class_dist_cmyk.jpeg}
-\caption{Top five semantic classes of the source intervention mentions that remain unmapped from the source to the target}.
+\caption{Top five semantic classes of the source intervention mentions that remain unmapped from the source to the target.}.
 \label{app:unmapped_class_dist}
 \end{figure}
 %
@@ -729,7 +730,7 @@ combination product & 3 \\
 \begin{figure*}[hbt!]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/mention_lengths_distribution_cmyk.jpg}
-\caption{Left) Phrase length distribution of mapped intervention mentions, Right) Phrase length distribution of unmapped intervention mentions}.
+\caption{Left) Phrase length distribution of mapped intervention mentions, Right) Phrase length distribution of unmapped intervention mentions.}.
 \label{app:length_mappedunmapped}
 \end{figure*}
 %
