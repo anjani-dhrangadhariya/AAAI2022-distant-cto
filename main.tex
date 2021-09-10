@@ -766,18 +766,18 @@ It is interesting to note that the radiographic procedure ``cystourethrography''
 \label{app:expdet}
 %
 For the candidate generation process, we did not define any junk elements for using the {\tt sequencematcher} function.
-All the NER experiments in this article were conducted in PyTorch and thr models were trained for 10 epochs with a mini-batch size of 10 for training and 6 for evaluation.
+All the NER experiments in this article were conducted in PyTorch and the models were trained for 10 epochs with a mini-batch size of 10 for training and 6 for evaluation.
 We used the IO (Inside, Outside) also called as raw labeling for all the NER tasks to make the experiments comparable with the previous studies.
 The maximum sequence length was set to 100 because the average length of each input text sequence was about 68 words.
 For both experiments types, either using the DISTANT-CTO alone or with the EBM-PICO training set, 80\% of the data was used for training and 20\% for development.
-The [CLS] embeddings from BERT or SciBERT layer were used as features of the input text.
+The [CLS] embeddings from SciBERT layer were used as features of the input text.
 SciBERT was fine-tuned by not freezing weights during the experiments.
 Hidden size for LSTM/BiLSTM was set to 512/1024 for the text input embeddings and 20/40 for the POS one-hot embeddings.
 ReLU was used as the activation function before feeding emission outputs to the CRF layer.
 Model training was optimized using AdamW using a learning rate of 5e-5.
 The gradients were clipped to 1.0 to mitigate problem of exploding gradients.
 Due to very specific RAM and GPU requirements for each experiment and the institute's capacity for sharing the GPU's amongst the group members, experiments were carried out on the following GPU's.
-Each experiment was carried out on the single GPU's without any data and model parallelization.
+Each experiment was carried out on single GPU's without any data and model parallelization.
 %
 %
 \begin{table}[htp]
